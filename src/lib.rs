@@ -12,6 +12,7 @@ pub fn load_input_file(filepath: &PathBuf) -> String {
 
     if !filepath.exists() || !filepath.is_file() {
         eprintln!("The input file either doesn't exist, or isn't a file.");
+        eprintln!("Try running with -r|--reuse to reuse the input from part 1?");
         process::exit(1);
     }
 
