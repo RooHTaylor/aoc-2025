@@ -3,9 +3,9 @@ use std::collections::HashSet;
 
 #[derive(Debug, Copy, Clone)]
 struct JunctionBox {
-    x: usize,
-    y: usize,
-    z: usize,
+    x: isize,
+    y: isize,
+    z: isize,
     circuit: usize,
 }
 
@@ -22,19 +22,19 @@ fn parse_input(input: &str) -> Result<Vec<JunctionBox>, String> {
             return Err(format!("Invalid input! {}", line.1))
         }
 
-        let x: usize = match parts[0].parse() {
+        let x: isize = match parts[0].parse() {
             Ok(n) => n,
             Err(_) => {
                 return Err(format!("Invalid x input! {}", line.1))
             },
         };
-        let y: usize = match parts[1].parse() {
+        let y: isize = match parts[1].parse() {
             Ok(n) => n,
             Err(_) => {
                 return Err(format!("Invalid y input! {}", line.1))
             },
         };
-        let z: usize = match parts[2].parse() {
+        let z: isize = match parts[2].parse() {
             Ok(n) => n,
             Err(_) => {
                 return Err(format!("Invalid z input! {}", line.1))
