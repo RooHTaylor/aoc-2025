@@ -2,3 +2,4 @@
 /inputs
 output.txt
 .sync-exclude.list
+.sync-exclude.lst
