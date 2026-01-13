@@ -1,3 +1,4 @@
 /target
 /inputs
 output.txt
+.sync-exclude.list
