@@ -75,7 +75,7 @@ fn parse_input(input: &str) -> Result<Vec<Machine>, String> {
     Ok(machines)
 }
 
-fn recurse_buttons(debug: bool, state: usize, target: usize, buttons: &Vec<usize>, pressed_buttons: Vec<bool>, width: usize, smallest: &mut usize) {
+fn recurse_buttons_part1(debug: bool, state: usize, target: usize, buttons: &Vec<usize>, pressed_buttons: Vec<bool>, width: usize, smallest: &mut usize) {
 
     for (i, b) in buttons.iter().enumerate() {
         // Skip if we have already pressed this button (since buttons can only 
@@ -104,7 +104,7 @@ fn recurse_buttons(debug: bool, state: usize, target: usize, buttons: &Vec<usize
             return
         }
         if debug { println!("Not at the target yet! Recursing."); }
-        recurse_buttons(debug, new_state, target, buttons, pressed_buttons_clone, width, smallest);
+        recurse_buttons_part1(debug, new_state, target, buttons, pressed_buttons_clone, width, smallest);
     }
 }
 
@@ -125,7 +125,7 @@ pub fn part1(debug: bool, input: &str) -> Result<String, String> {
         let mut smallest: usize = machine.buttons.len() + 1;
         let pressed_buttons = vec![false; machine.buttons.len()];
 
-        recurse_buttons(debug, 0, machine.target, &machine.buttons, pressed_buttons, machine.joltages.len(), &mut smallest);
+        recurse_buttons_part1(debug, 0, machine.target, &machine.buttons, pressed_buttons, machine.joltages.len(), &mut smallest);
         total = match total.checked_add(smallest) {
             Some(t) => t,
             None => {
